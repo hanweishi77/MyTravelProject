@@ -1,0 +1,105 @@
+{% extends "admin/admin.html" %}
+
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>一起旅行管理系统</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ url_for("admin.index") }}">首页</a></li>
+              <li class="breadcrumb-item">游记管理</li>
+              <li class="breadcrumb-item active"><a href="{{ url_for("admin.travels_edit",id=travels.id) }}">编辑游记</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+     <section class="content">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <!-- Default box -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">添加游记模块</h3>
+              </div>
+                 <!-- form start -->
+                <form method="post" enctype="multipart/form-data" novalidate>
+                     {% for msg in get_flashed_messages(category_filter=["err"]) %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                            </button>
+                            <h4><i class="icon fa fa-ban"></i> 操作失败</h4>
+                            {{ msg }}
+                        </div>
+                     {% endfor %}
+                     {% for msg in get_flashed_messages(category_filter=["ok"]) %}
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                                </button>
+                                <h4><i class="icon fa fa-check"></i> 操作成功</h4>
+                                {{ msg }}
+                            </div>
+                     {% endfor %}
+                  <div class="form-group">
+                    <label for="input_title">{{ form.title.label }}</label>
+                    {{ form.title }}
+                    {% for err in form.title.errors %}
+                        <div class="col-md-12">
+                            <p style="color: red">{{ err }}</p>
+                        </div>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                     <label for="input_area_id">{{ form.scenic_id.label }}</label>
+                     {{ form.scenic_id }}
+                      {% for err in form.scenic_id.errors %}
+                            <div class="col-md-12">
+                                <p style="color: red">{{ err }}</p>
+                            </div>
+                      {% endfor %}
+                  </div>
+                  <div class="form-group">
+                     {{ form.author.label }}
+                     {{ form.author }}
+                      {% for err in form.author.errors %}
+                            <div class="col-md-12">
+                                <p style="color: red">{{ err }}</p>
+                            </div>
+                      {% endfor %}
+                  </div>
+                  <div class="form-group">
+                     {{ form.content.label }}
+                     {{ form.content}}
+                      {% for err in form.content.errors %}
+                        <div class="col-md-12">
+                            <p style="color: red">{{ err }}</p>
+                        </div>
+                      {% endfor %}
+                  </div>
+                    <!-- /.card-body -->
+                  <div class="card-footer">
+                    {{ form.csrf_token }}
+                    {{ form.submit }}
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock %}
+
+{% block js %}
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='content',filebrowserUploadUrl='/admin/ckupload/') }}
+
+{% endblock %}

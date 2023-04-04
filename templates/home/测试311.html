@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .tables {
+            margin: 100px 100px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        .tables td {
+            border: 1px solid black;
+        }
+
+        .ck:checked, #checkAll:checked {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class='container'>
+    <table class='tables'>
+        <tr>
+            <td><input type="checkbox" id='checkAll'></td>
+            <td>商品</td>
+            <td>数量</td>
+            <td>单价</td>
+            <td>总计</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class='ck'></td>
+            <td>小米plus</td>
+            <td>5</td>
+            <td>2000</td>
+            <td>10000</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class='ck'></td>
+            <td>荣耀v9</td>
+            <td>5</td>
+            <td>1800</td>
+            <td>9000</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class='ck'></td>
+            <td>华为</td>
+            <td>1</td>
+            <td>5000</td>
+            <td>5000</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class='ck'></td>
+            <td>oppo 9</td>
+            <td>3</td>
+            <td>1200</td>
+            <td>3600</td>
+        </tr>
+    </table>
+</div>
+<script>
+    //事件对象
+    const checkAll = document.querySelector('#checkAll')
+
+    const cks = document.querySelectorAll('.ck')
+    checkAll.addEventListener('click', function () {
+        console.log(checkAll.checked)
+        for (let i = 0; i < cks.length; i++) {
+            cks[i].checked = this.checked;
+        }
+    })
+
+    for (let i = 0; i < cks.length; i++) {
+        cks[i].addEventListener('click', function () {
+            checkAll.checked = (document.querySelectorAll('.ck:checked').length) === cks.length ? true : false;
+        })
+    }
+
+</script>
+</body>
+</html>

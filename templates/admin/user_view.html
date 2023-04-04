@@ -1,0 +1,69 @@
+{% extends  "admin/admin.html" %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>一起旅行管理系统</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ url_for("admin.index") }}">首页</a></li>
+              <li class="breadcrumb-item">会员管理</li>
+              <li class="breadcrumb-item active"><a href="#">会员详情</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">会员详情</h3>
+        </div>
+        <div class="card-body p-0">
+         <div class="row">
+             <div class="col-4">编号</div>
+             <div class="col-8">{{ user.id }}</div>
+         </div>
+         <div class="row">
+             <div class="col-4">用户名</div>
+             <div class="col-8">{{ user.username }}</div>
+         </div>
+         <div class="row">
+             <div class="col-4">邮箱</div>
+             <div class="col-8">{{ user.email }}</div>
+         </div>
+         <div class="row">
+             <div class="col-4">手机</div>
+             <div class="col-8">{{ user.phone }}</div>
+         </div>
+         <div class="row">
+             <div class="col-4">头像</div>
+             <div class="col-8">
+                 <img style="width: 50px; height: 50px;"
+                     src="{{ url_for('static', filename='uploads/user/20230402225442_85.png') }}"
+                     class="img-responsive" alt="">
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-4">注册时间</div>
+             <div class="col-8">{{ user.addtime }}</div>
+         </div>
+         <div class="row">
+             <div class="col-4">个性简介</div>
+             <div class="col-8">{{ user.info }}</div>
+         </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </section>
+    <!-- /.content -->
+{% endblock %}

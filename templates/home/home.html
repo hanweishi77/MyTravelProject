@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>一起旅行</title>
+    <meta charset="UTF-8">
+    <link href="{{url_for('static',filename='base/css/home.css')}}" rel="stylesheet">
+    {% block css %}{% endblock %}
+</head>
+<body>
+<!--导航条-->
+<div class="nav">
+        <div class="nav_logo">
+                <a href="/" class="logo">
+                    <img src="{{url_for('static',filename='base/img/logo.png')}}" alt=""  class="img-responsive">
+                    <h1>一起旅行</h1>
+                </a>
+        </div>
+        <div class="nav_option">
+            <ul>
+                <li ><a href="/">首页</a></li>
+                <li ><a href="/search/"> 全部景区</a></li>
+                <li><a href="/about/">关于我们</a></li>
+                <li><a href="/contact/">联系我们</a></li>
+                {% if session["user_id"] %}
+                    <li><a href="/collect_list/">我的收藏</a></li>
+                    <li><a href="/logout/">退出</a></li>
+                {% else %}
+                    <li><a href="/login/">登录/注册</a></li>
+                {% endif %}
+            </ul>
+        </div>
+</div>
+<!--导航条结束-->
+<!--内容-->
+{% block content %}{% endblock %}
+<!--内容结束-->
+
+<!--底部-->
+<div class="bot1_wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div id="bot1_title">交流合作</div>
+        <ul class="ul1">
+          <li><a href="">网站</a></li>
+          <li><a href="">图书</a></li>
+          <li><a href="">论坛</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <div class="bot1_title">关注微信</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="bot1_title">客服热线</div>
+        <div class="txt1">客服热线(每天9:00-17:00)</div>
+        <div class="phone2">400 675 1066</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bot2_wrapper">
+  <div class="container">
+    <div class="left_side">
+      Copyright &copy; 2023, 学习, No Business 学习使用
+    </div>
+    <div class="right_side"></div>
+  </div>
+</div>
+<!--底部结束-->
+<script type='text/javascript' src="{{url_for('static',filename='base/js/jquery.js')}}"></script>
+<script src="{{ url_for('static',filename='layer/layer.js') }}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+{% extends "home/home.html" %}
+ {% block css %}
+     <link href="{{ url_for('static',filename='base/css/collect_list.css') }}" rel="stylesheet">
+ {% endblock %}
+{% block content %}
+<div id="collect-list">
+    {% if  not count %}
+    <div class="txt1"  id="no-found" style="padding: 20px"><h3>暂时没有收藏景区！</h3></div>
+    {% else %}
+    {% for v in  collect_my %}
+     <div class="col-sm">
+        <div class="thumbnail">
+          <figure>
+            <a href="{{ url_for('home.info', id=v.scenic.id)}}">
+            <img alt="" src="{{url_for('static',filename='uploads/'+ v.scenic.logo)}}" height='240px' class="img-responsive">
+            </a>
+          </figure>
+          <div class="caption">
+            <div class="txt1">{{ v.scenic.title }}</div>
+            <div class="txt3 clearfix">
+              <div class="left_side">
+                <div class="nums">{{ v.scenic.address }}</div>
+              </div>
+                <div class="right_side"><a href="javascript:"   value="{{ v.scenic_id }}">取消收藏</a></div>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+$(document).ready(function (){
+    $('#collect-list .caption a').click(function (){
+        let scenic_id = $(this).attr("value")
+        console.log(scenic_id)
+        $.ajax({
+            url:"{{ url_for("home.collect_cancel") }}",
+            type:"GET",
+            data:{scenic_id:scenic_id},
+            dataType:"json",
+            success:function (res){
+                if(res.ok == 1){
+                    layer.msg("取消收藏！", {icon:1, time:2000}, function (){window.location.reload()})
+                }
+                else{
+                    layer.msg("取消收藏失败！", {icon:2, time:2000})
+                }
+            }
+        })
+    })
+})
+</script>
+{% endblock %}

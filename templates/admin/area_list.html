@@ -1,0 +1,90 @@
+{% extends  "admin/admin.html" %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>一起旅行管理系统</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ url_for("admin.index") }}">首页</a></li>
+              <li class="breadcrumb-item">地区管理</li>
+              <li class="breadcrumb-item active"><a href="{{ url_for("admin.area_list") }}">地区列表</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">地区列表</h3>
+          <!-- search box -->
+          <div class=" card-tools">
+            <form action="" method="GET">
+              <div class="input-group input-group-sm">
+                 <input type="text" name="titleSearch" class="form-control "
+                   placeholder="请输入地区名称...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
+                    </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects" style="font-size:14px;text-align: center;">
+              <thead>
+                  <tr>
+                      <th>编号</th>
+                      <th>地区名称</th>
+                      <th>是否推荐</th>
+                      <th>添加时间</th>
+                      <th>操作选项</th>
+                  </tr>
+              </thead>
+              <tbody>
+              {% if area_all %}
+                  {% for area in area_all %}
+                      <tr>
+                          <td>{{ area.id }}</td>
+                          <td>{{ area.name }}</td>
+                          {% if area.is_recommended==1 %}
+                          <td> 是</td>
+                          {% else %}
+                          <td> 否</td>
+                          {% endif %}
+                          <td>{{area.addtime}}</td>
+                          <td class="project-actions text-right" style="width: 20%">
+                              <a class="btn btn-primary btn-sm" href="{{url_for('admin.area_edit',id=area.id)}}">
+                                  <i class="fas fa-folder">
+                                  </i>
+                                  编辑
+                              </a>
+                              <a class="btn btn-info btn-sm" href= "{{url_for('admin.area_del',id=area.id)}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  删除
+                              </a>
+                          </td>
+                      </tr>
+                  {% endfor %}
+              {% endif %}
+              </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+{% endblock %}

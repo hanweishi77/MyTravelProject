@@ -1,0 +1,26 @@
+#team1{
+    width: 1200px;
+    overflow: hidden;
+    border: #ffed26 solid 1px;
+    margin: 0 auto;
+}
+#team1 .side{
+    overflow: hidden;
+}
+#team1  .left_side{
+    float: left;
+     margin-left: 50px;
+}
+#team1  .right_side{
+    float: right;
+    margin-top: 20px;
+    margin-right: 100px;
+}
+
+#team1  .right_side button{
+    font-size: 18px;
+     margin: 0 auto;
+}
+.container{
+    margin: 0 50px;
+}

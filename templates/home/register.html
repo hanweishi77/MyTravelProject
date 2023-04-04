@@ -1,0 +1,68 @@
+{% extends "/home/layout.html" %}
+{% block css %}
+ <link rel="stylesheet" href="{{url_for('static',filename='base/css/login-register.css')}}" type="text/css">
+ {% endblock %}
+
+{% block content %}
+ <div id="login" class="login-container">
+        <form role="form" method="POST" action="" novalidate >
+        {% for msg in get_flashed_messages(category_filter=["err"]) %}
+            <p style="color:red">{{ msg }}</p>
+        {% endfor %}
+        {% for msg in get_flashed_messages(category_filter=["ok"]) %}
+        <p>{{ msg }}请去<a href="\login\">登录!</a></p>
+        {% endfor %}
+        <div class="form-control">
+            {{ form.username.label }}<br>
+            {{ form.username }}
+        </div>
+        {% for err in form.username.errors %}
+        <div>
+            <ul class="errors">
+                <li>{{ err }}</li>
+            </ul>
+         </div>
+        {% endfor %}
+        <div class="form-control">
+            {{ form.email.label }}<br>
+            {{ form.email }}
+        </div>
+        {% for err in form.email.errors %}
+            <div>
+                <ul class="errors">
+                    <li>{{ err }}</li>
+                </ul>
+            </div>
+        {% endfor %}
+       <div class="form-control">
+           {{ form.pwd.label }}<br>
+           {{ form.pwd }}
+       </div>
+        {% for err in form.pwd.errors %}
+            <div>
+            <ul class="errors">
+                <li>{{ err }}</li>
+            </ul>
+            </div>
+        {% endfor %}
+        <div class="form-control">
+            {{ form.re_pwd.label }}<br>
+            {{ form.re_pwd }}
+        </div>
+        {% for err in form.re_pwd.errors %}
+            <div>
+                <ul class="errors">
+                    <li>{{ err }}</li>
+                </ul>
+            </div>
+        {% endfor %}
+        <div class="form-control">
+            {{ form.csrf_token }}
+            {{ form.submit }}
+        </div>
+        </form>
+  <div>
+    <p class="change-form">已有账号，直接去 <a href="/login/" >登录</a></p>
+  </div>
+</div>
+{% endblock %}

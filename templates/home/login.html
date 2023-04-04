@@ -1,0 +1,45 @@
+{% extends "home/layout.html" %}
+ {% block css %}
+ <link rel="stylesheet" href="{{url_for('static',filename='base/css/login-register.css')}}" type="text/css">
+ {% endblock %}
+
+{% block content %}
+<div id="login" class="login-container">
+  <form role="form" method="POST" action="" novalidate>
+    <div class="form-control">
+        {{ form.email }}
+    </div>
+    {% for err in form.email.errors %}
+        <div class="form-control">
+          <ul class="errors">
+              <li>{{ err }}</li>
+          </ul>
+        </div>
+    {% endfor %}
+    <div class="form-control">
+        {{ form.pwd }}
+    </div>
+    {% for err in form.pwd.errors %}
+        <div class="form-control">
+          <ul class="errors">
+              <li>{{ err }}</li>
+          </ul>
+        </div>
+    {% endfor %}
+    {% for msg in get_flashed_messages(category_filter=["err"]) %}
+        <div class="form-control">
+          <ul class="errors">
+              <li>{{ msg }}</li>
+          </ul>
+        </div>
+    {% endfor %}
+    <div class="form-control">
+        {{ form.csrf_token }}
+        {{ form.submit }}
+    </div>
+  </form>
+  <div>
+    <p class="change-form">还没有账号?去 <a href="\register\" class="">注册</a></p>
+  </div>
+</div>
+{% endblock %}

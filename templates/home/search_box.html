@@ -1,0 +1,39 @@
+<form action="/search/" class="form1" method="get">
+    <div class="row">
+        <!--按城市查询-->
+        <div class="'col-city col">
+            <div class="select1_wrapper">
+                <label>按城市查询：</label>
+                <div class="select1_inner">
+                    <select name="area_id" class="select2 select">
+                        {%  for v in area %}
+                            <option value="{{ v.id }}"
+                                    {% if v.id==area_id %}selected="selected"
+                                    {% endif %}> {{ v.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--按星级查询-->
+        <div class="col-star  col">
+            <div class="select1_wrapper">
+                <label>按星级查询：</label>
+                <div class="select_inner">
+                    <select name="star" class="select2 select">
+                        {% for i in range(1,6) %}
+                            <option value="{{ i }}"
+                                {% if i==star %}selected{% endif %}>{{ i }}星</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--提交查询-->
+        <div class="col-search col">
+            <div class="button1_wrapper">
+                <button type="submit" class=" btn-form1-submit">SEARCH</button>
+            </div>
+        </div>
+    </div>
+</form>

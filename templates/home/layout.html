@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>一起旅行</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='base/css/layout.css')}}" type="text/css" >
+    {% block css %}{% endblock %}
+</head>
+<body>
+<!-- 导航栏开始 -->
+<div id="toolbar">
+  <a href="/" >
+    <img src="{{url_for('static',filename='base/img/logo.png')}}" alt="" class="icon">
+    <h1>一起旅行</h1></a>
+  <ul class="links">
+    <li>
+      <a href="/login/" class="">登录</a></li>
+    <li>
+      <a href="/register/" class="">注册</a></li>
+  </ul>
+</div>
+<!-- 导航栏结束 -->
+<!--内容-->
+   {% block content  %}
+   {% endblock %}
+<!--内容-->
+<!--底部开始-->
+<div id="footer">
+    <div class="hr"></div>
+    <div class="login-container">
+        <p><span>Copyright    2023  学习者所有</span></p>
+    </div>
+</div>
+</body>
+</html>

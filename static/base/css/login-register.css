@@ -1,0 +1,66 @@
+#login{
+    border-bottom:1px solid #e4e4e4;
+    box-shadow:0 1px 5px rgba(0,0,0,.1);
+}
+#login form {
+	padding-top:40px
+}
+#login .form-control {
+	margin-bottom:1em
+}
+#login input[type=text],#login input[type=submit],#login input[type=email],#login input[type=password],#login label {
+	width:100%;
+	font-size:19px!important;
+	line-height:24px;
+	color:#484848;
+	font-weight:300;
+	-webkit-appearance:none
+}
+#login input {
+	background-color:transparent;
+	padding:11px;
+	border:1px solid #dbdbdb;
+	border-radius:2px;
+	box-sizing:border-box
+}
+#login input[type=submit] {
+	background-color:#4fc08d;
+	color:#fff;
+	cursor:pointer;
+	border:#4fc08d;
+	border-radius:4px;
+	padding-top:12px;
+	padding-bottom:12px
+}
+#login .change-form {
+	text-align:center
+}
+#login .change-form a {
+	color:#4fc08d;
+	cursor:pointer
+}
+#login ul.errors {
+	margin:0;
+	padding:0
+}
+#login ul.errors li {
+	font-family:Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif!important;
+	font-size:15px!important;
+	line-height:24px!important;
+	color:#d93900!important;
+	list-style:none
+}
+
+.login-container {
+	width: 350px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+.login-box-msg,
+.register-box-msg {
+  color : green;
+  margin: 0;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}

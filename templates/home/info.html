@@ -1,0 +1,71 @@
+{% extends "home/home.html" %}
+{% block css %}
+<link href="{{url_for('static',filename='base/css/info.css')}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="team1">
+    <!--景区内容-->
+    <div class="container">
+        <div class="side">
+            <h2 class="left_side">{{ scenic.title }}</h2>
+            <div class="right_side">
+            {% if count %}
+            <button class="collect-button">已收藏</button>
+            {% else %}
+            <button class="collect-button">收藏</button>
+            {% endif %}
+            </div>
+        </div>
+        <div class="content">{{ scenic.content|safe}}</div>
+    </div>
+    <!--游记列表-->
+    <div class="container">
+    <h2 class="animated">{{ scenic.title }}游记</h2>
+    <div class="row">
+        {% if not scenic.travels %}
+        <div class="title1">暂无游记</div>
+        {% else %}
+        <div>
+            <ul>
+                {% for v in scenic.travels %}
+                <li><a href="{{url_for('home.travels',id=v.id)}}">{{ v.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static',filename='layer/layer.js') }}"></script>
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $(".collect-button").click(function () {       // 触发点击事件
+            user_id = {{ user_id }};                   // 获取用户ID
+            console.log(user_id)
+            if(!user_id){                               // 如果用户ID不错在，即用户未登录
+                layer.msg("请先登录",{icon:2,time:2000}); // layer弹出错误信息
+                return false;                             // 终止执行
+            }
+            let scenic_id = {{ scenic.id }}
+            $.ajax({                                               // 使用Ajax异步提交
+                url: "{{ url_for('home.collect_add') }}",         // 提交到的URL
+                type: "GET",                                     // 提交方式为GET
+                data:{scenic_id: scenic_id},                     // 传递参数
+                dataType: "json",                                // 数据类型为json
+                success: function (res) {                         // 操作成功后执行逻辑
+                    if (res.ok == 1) {
+                        layer.msg("收藏成功！",{icon:1,time:2000});    // 显示弹出层信息
+                        $(".collect-button").empty();                // 清空按钮区文字
+                        $(".collect-button").append("已收藏");       // 填充文字
+                    } else {
+                        layer.msg("您已收藏",{icon:2,time:2000});    // 提示已收藏
+                    }
+                }
+            })
+            })
+        })
+</script>
+{% endblock %}

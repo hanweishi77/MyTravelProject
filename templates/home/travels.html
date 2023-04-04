@@ -1,0 +1,25 @@
+{% extends "home/home.html" %}
+{% block content %}
+<div>
+    <img width=100% height=270px  src="{{url_for('static',filename='/base/img/gonglue_banner.jpg')}}">
+</div>
+<div class="breadcrumbs1_wrapper">
+  <div class="container">
+    <div class="breadcrumbs1">
+      <a href="/">首页</a>
+      <span>/</span>
+      <a href="{{url_for('home.info',id=travels.scenic_id)}}">景区</a>
+      <span>/</span>游记
+    </div>
+  </div>
+</div>
+
+<div id="team1">
+  <div class="container">
+    <h2 class="animated">{{travels.title}}</h2>
+    <div class="title1">作者：{{ travels.author }} &nbsp&nbsp&nbsp{{ travels.addtime }}</div>
+    <div class="content">{{travels.content|safe}}</div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+﻿{% extends "home/home.html" %}
+{% block css %}
+    <link href="{{url_for('static',filename='base/css/about.css')}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="why1">
+  <div class="container">
+    <h2 class="animated">为什么选择我们</h2>
+    <div class="title1 animated">因为专注，所以专业。<br>专注旅游，我们是认真的！</div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="thumb2 animated">
+          <div class="thumbnail clearfix">
+            <a href="#">
+              <figure class="">
+              <img src="{{ url_for('static',filename='base/img/why1.png') }}" onmouseover="this.src='{{ url_for('static',filename='base/img/why1_hover.png') }}'" onmouseout="this.src='{{ url_for('static',filename='base/img/why1.png') }}'">
+              </figure>
+              <div class="caption">
+                <div class="txt1">神奇的旅行</div>
+                <div class="txt2">为您展示真实的旅游景区、精彩的旅游照片、全面的旅游攻略以及最新的旅游资讯</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumb2 animated">
+          <div class="thumbnail clearfix">
+            <a href="#">
+              <figure class="">
+                <img src="{{ url_for('static',filename='base/img/why2.png') }}" onmouseover="this.src='{{ url_for('static',filename='base/img/why2_hover.png') }}'" onmouseout="this.src='{{ url_for('static',filename='base/img/why2.png') }}'">
+              </figure>
+              <div class="caption">
+                <div class="txt1">分享旅行</div>
+                <div class="txt2">交换资讯，分享旅行。帮助这里的这里朋友，或者是获得帮助。也可以交流攻略、美食、音乐、摄影日记，以及与旅行有关的零零种种...</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumb2 animated">
+          <div class="thumbnail clearfix">
+            <a href="#">
+              <figure class="">
+                <img src="{{ url_for('static',filename='base/img/why3.png') }}" onmouseover="this.src='{{ url_for('static',filename='base/img/why3_hover.png') }}'" onmouseout="this.src='{{ url_for('static',filename='base/img/why3.png') }}'">
+              </figure>
+              <div class="caption">
+                <div class="txt1">发现惊喜</div>
+                <div class="txt2">只要你爱旅行，只要你有爱。这里的一切都是都由你和其他成员产生和决定。</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumb2 animated">
+          <div class="thumbnail clearfix">
+            <a href="#">
+              <figure class="">
+                <img src="{{ url_for('static',filename='base/img/why4.png') }}" onmouseover="this.src='{{ url_for('static',filename='base/img/why4_hover.png') }}'" onmouseout="this.src='{{ url_for('static',filename='base/img/why4.png') }}'">
+              </figure>
+              <div class="caption">
+                <div class="txt1">优质的服务</div>
+                <div class="txt2">我们是一个高质量的旅游爱好者群体，钟情于自驾游，拥有专业的摄影技术，为您提供最优质的旅游服务。</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="company1">
+  <div class="container">
+    <h2 class="animated">关于我们</h2>
+    <div style="padding: 30px">
+      <div class="title1 animated">
+        学习编程使用，23年3月。
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

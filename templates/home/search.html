@@ -1,0 +1,35 @@
+{% extends "home/home.html" %}
+ {% block css %}
+ <link rel="stylesheet" href="{{url_for('static',filename='base/css/search.css')}}" type="text/css" >
+ {% endblock %}
+
+{% block content %}
+ <div id="tables1">
+{% include  './home/search_box.html' %}
+ </div>
+<div id="scenic-box">
+    {% if not count %}
+    <div id="no-found" class="txt1" style="padding: 20px">没有符合条件的景区，请重新查询</div>
+    {% else %}
+    {% for v in  all_scenic %}
+     <div class="col-sm">
+        <div class="thumbnail">
+          <figure>
+            <img src="{{url_for('static',filename='uploads/'+ v.logo)}}" height='240px' class="img-responsive">
+          </figure>
+          <div class="caption">
+            <div class="txt1">{{ v.title }}</div>
+            <div class="txt3 clearfix">
+              <div class="left_side">
+                <div class="nums">{{ v.address }}</div>
+              </div>
+              <div class="right_side"><a href="{{ url_for("home.info",id=v.id) }}">查看</a></div>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
