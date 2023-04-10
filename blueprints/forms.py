@@ -21,7 +21,7 @@ class RegisterForm(FlaskForm):
     )
     submit = wtforms.SubmitField("注册")
 
-    def validate_email(self, field):
+    def validate_email(self, field, extra_validators=None):
         email = field.data
         user = User.query.filter_by(email=email).first()
         if user:
@@ -67,6 +67,7 @@ class LoginForm(FlaskForm):
             "placeholder": "请输入密码！",
         }
     )
+
     submit = wtforms.SubmitField(
         '登录',
     )
