@@ -16,7 +16,7 @@ class User(db.Model):
     collect = db.relationship('Collect', backref='user')                 # 收藏外键关系关联
     userlog = db.relationship("UserLog", backref="user")                 # 外键关系关联用户登录日志
 
-    def check_password(self, pwd):
+    def check_pwd(self, pwd):
         """
         检测密码是否正确
         :param pwd: 密码

@@ -72,6 +72,16 @@ class LoginForm(FlaskForm):
         '登录',
     )
 
+    def validate(self, extra_validators=None):
+        initial_validation = super(LoginForm, self).validate()
+        if not initial_validation:
+            return False
+        user = User.query.filter_by(email=self.email.data).count()
+        if user == 0:
+            self.email.errors.append("邮箱不存在")
+            return False
+        return True
+
 
 class SuggetionForm(FlaskForm):
     """意见建议"""

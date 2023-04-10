@@ -44,13 +44,11 @@ def login():
     if form.validate_on_submit():
         data = form.data
         user = User.query.filter_by(email=data["email"]).first()
-        if not user:
-            flash("邮箱不存在", "err")
-            return redirect(url_for("home.login"))
-        if not user.check_password(data["pwd"]):
+        if not user.check_pwd(data["pwd"]):
             flash("密码错误", "err")
             return redirect(url_for("home.login"))
-        session["user_id"] = user.id                # 将user_id写入session, 后面用户判断用户是否登录
+        session["email"] = data["email"]                             # 将email写入session
+        session["user_id"] = user.id                                 # 将user_id写入session, 后面用户判断用户是否登录
         userlog = UserLog(                                           # 将用户登录信息写入Userlog表
             user_id=user.id,
             ip=request.remote_addr
