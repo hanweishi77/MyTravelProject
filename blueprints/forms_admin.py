@@ -41,12 +41,23 @@ class LoginForm(FlaskForm):
         }
     )
 
+    def validate(self, extra_validators=None):
+        initial_validation = super(LoginForm, self).validate()
+        if not initial_validation:
+            return False
+        admin = Admin.query.filter_by(name=self.name.data).count()
+        if admin == 0:
+            self.name.errors.append("账号不存在")
+            return False
+        return True
     # 验证账号，命名规则：validate_ + 字段名。如果要验证密码，则可以创建函数validate_pwd
+    """
     def validate_name(self, field):
         name = field.data
         admin = Admin.query.filter_by(name=name).count()
         if admin == 0:
             raise ValidationError("账号不存在! ")
+    """
 
 
 class PwdForm(FlaskForm):
@@ -90,6 +101,18 @@ class PwdForm(FlaskForm):
         }
     )
 
+    def validate(self, extra_validators=None):
+        initial_validation = super(PwdForm, self).validate()
+        if not initial_validation:
+            return False
+        name = session["admin"]
+        admin = Admin.query.filter_by(name=name).first()
+        if not admin.check_pwd(self.old_pwd.data):
+            self.old_pwd.errors.append("旧密码错误")
+            return False
+        return True
+
+    """
     def validate_old_pwd(self, field):
         old_pwd = field.data
         name = session["admin"]
@@ -98,6 +121,7 @@ class PwdForm(FlaskForm):
         ).first()
         if not admin.check_pwd(old_pwd):
             raise ValidationError("旧密码错误！")
+    """
 
 
 class ScenicForm(FlaskForm):

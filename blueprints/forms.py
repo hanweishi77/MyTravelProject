@@ -21,26 +21,26 @@ class RegisterForm(FlaskForm):
     )
     submit = wtforms.SubmitField("注册")
 
+    def validate(self, extra_validators=None):
+        initial_validation = super(RegisterForm, self).validate()
+        if not initial_validation:
+            return False
+        user = User.query.filter_by(email=self.email.data).first()
+        if user:
+            self.email.errors.append("邮箱已存在")
+            return False
+        if self.pwd.data != self.re_pwd.data:
+            self.pwd.errors.append("密码不一致")
+            return False
+        return True
+    """
     def validate_email(self, field, extra_validators=None):
         email = field.data
         user = User.query.filter_by(email=email).first()
         if user:
             raise wtforms.ValidationError(message="该邮箱已经被注册！")
-
+    """
     # 自定义验证 1.邮箱是否被注册  2.验证码是否正确
-    """
-    
-
-    def validate_vaptcha(self, field):
-        captcha = field.captcha
-        email = self.my_email.data
-        captcha_model = EmailCaptchaModel.filter_by(email=email, captcha=captcha.first())
-        if not captcha_model:
-            raise wtforms.ValidationError(message="邮箱或验证码错误！")
-        else:
-            db.session.delete(captcha_model)
-            db.session.commit()
-    """
 
 
 class LoginForm(FlaskForm):
