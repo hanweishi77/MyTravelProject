@@ -1,6 +1,6 @@
 # _*_ codding:utf-8 _*_
 """网页用户界面视图函数"""
-
+# 该注释是我在测试git的功能
 from flask import request, render_template, flash, redirect, url_for, session
 from blueprints.forms import RegisterForm, LoginForm, SuggetionForm
 from flask import Blueprint
