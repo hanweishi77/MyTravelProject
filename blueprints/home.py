@@ -166,8 +166,8 @@ def collect_add():
 def collect_list():
     """查看收藏景区列表"""
     collect_my = Collect.query.filter_by(user_id=session['user_id']).order_by(Collect.addtime.desc())
-    count = collect_my.count()
-    return render_template('home/collect_list.html', collect_my=collect_my, count=count)
+
+    return render_template('home/collect_list.html', collect_my=collect_my)
 
 
 @home_bp.route("/collect_cancel/")

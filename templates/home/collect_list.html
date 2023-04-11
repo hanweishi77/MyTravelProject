@@ -4,28 +4,28 @@
  {% endblock %}
 {% block content %}
 <div id="collect-list">
-    {% if  not count %}
+    {% if  not collect_my %}
     <div class="txt1"  id="no-found" style="padding: 20px"><h3>暂时没有收藏景区！</h3></div>
     {% else %}
     {% for v in  collect_my %}
-     <div class="col-sm">
-        <div class="thumbnail">
-          <figure>
-            <a href="{{ url_for('home.info', id=v.scenic.id)}}">
-            <img alt="" src="{{url_for('static',filename='uploads/'+ v.scenic.logo)}}" height='240px' class="img-responsive">
-            </a>
-          </figure>
-          <div class="caption">
-            <div class="txt1">{{ v.scenic.title }}</div>
-            <div class="txt3 clearfix">
-              <div class="left_side">
-                <div class="nums">{{ v.scenic.address }}</div>
-              </div>
-                <div class="right_side"><a href="javascript:"   value="{{ v.scenic_id }}">取消收藏</a></div>
+        {% if v.scenic %}
+            <div class="col-sm">
+                <div class="thumbnail">
+                <figure>
+                    <a href="{{ url_for('home.info', id=v.scenic.id)}}">
+                    <img alt="" src="{{url_for('static',filename='uploads/'+ v.scenic.logo)}}" height='240px' class="img-responsive">
+                    </a>
+                </figure>
+                <div class="caption">
+                    <div class="txt1">{{ v.scenic.title }}</div>
+                    <div class="txt3 clearfix">
+                        <div class="left_side"><div class="nums">{{ v.scenic.address }}</div></div>
+                        <div class="right_side"><a href="javascript:"   value="{{ v.scenic_id }}">取消收藏</a></div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-    </div>
+            </div>
+        {% endif %}
     {% endfor %}
     {% endif %}
 </div>
