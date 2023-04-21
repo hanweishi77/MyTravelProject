@@ -1,0 +1,46 @@
+/*=============================全部景区==================================*/
+#scenic-box{
+    overflow: hidden;
+    min-height: 160px;
+    width: 1200px;
+    margin: 0 auto;
+}
+#no-found{
+    font-size: 20px;
+    text-align: center;
+}
+#scenic-box div.col-sm{
+    float: left;
+    margin:20px 30px;
+    border-top: #00a99d 4px solid;
+}
+.thumbnail{
+    padding: 0;
+}
+.thumbnail  figure{
+     margin:0;padding: 0;
+}
+.thumbnail  figure img{
+    width:330px;
+    height:230px;
+    margin:0;padding: 0;
+}
+.thumbnail  .txt1{
+     padding-right: 5px;font-size: 18px; color: #636363;
+}
+.thumbnail .txt3 .left_side{
+    padding-right: 5px;font-size: 13px; color: #636363;
+    float: left;
+}
+.thumbnail   .txt3 a {
+    position: relative;
+    float: right;
+    text-decoration: none;
+    background-color:#4fc08d;
+	color:#fff;
+	cursor:pointer;
+	border:#4fc08d;
+	border-radius:4px;
+	padding:4px 14px;
+    margin-right: 5px;
+}

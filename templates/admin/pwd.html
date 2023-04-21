@@ -1,0 +1,88 @@
+{% extends "admin/admin.html" %}
+
+{% block css %}
+<!-- icheck bootstrap -->
+<link rel="stylesheet" href="{{ url_for('static', filename='adminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container login-box">
+  <div class="login-logo">
+    <a href="{{ url_for('admin.index') }}"><b>一起旅行</b>后台管理</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <div class="login-box-msg">
+          {% for msg in get_flashed_messages(category_filter=["err"]) %}
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                </button>
+                <h4><i class="icon fa fa-ban"></i> 操作失败</h4>
+                {{ msg }}
+            </div>
+         {% endfor %}
+         {% for msg in get_flashed_messages(category_filter=["ok"]) %}
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                    </button>
+                    <h4><i class="icon fa fa-check"></i> 操作成功</h4>
+                    {{ msg }}
+                </div>
+         {% endfor %}
+      </div>
+      <form method="post">
+        <div class="input-group mb-3">
+          {{ form.old_pwd }}
+        </div>
+          {% for err in form.old_pwd.errors %}
+                    <div class="col-md-12">
+                        <p class="login-box-msg" style="color: red">{{ err }}</p>
+                    </div>
+          {% endfor %}
+        <div class="input-group mb-3">
+          {{form.new_pwd}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+            {% for err in form.new_pwd.errors %}
+                    <div class="col-md-12">
+                        <p class="login-box-msg" style="color: red">{{ err }}</p>
+                    </div>
+            {% endfor %}
+        </div>
+        <div class="input-group mb-3">
+          {{ form.re_pwd }}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+            {% for err in form.re_pwd.errors %}
+                    <div class="col-md-12">
+                        <p class="login-box-msg" style="color: red">{{ err }}</p>
+                    </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+          <div class="col-12">
+            {{ form.csrf_token }}
+            {{ form.submit }}
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+    </div>
+  <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+{% endblock %}
+
+{% block js %}
+<!-- Bootstrap 4 -->
+<script src="{{ url_for('static', filename='adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+{% endblock %}

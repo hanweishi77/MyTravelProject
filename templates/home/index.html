@@ -1,0 +1,112 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+    <!--首页大图轮播-->
+    <div class="slider" id="banner">
+        <div  class="slider-wrapper">
+            <img src="{{ url_for('static',filename='base/img/1.jpg') }}" alt="" />
+        </div>
+        <div class="slider-footer">
+            <p>欢迎来到一起旅行，快来加入我们吧</p>
+            <ul class="slider-indicator">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="toggle">
+                <button class="left_side" id="display-btn-left"> < </button>
+                <button class="right_side" id="display-btn-right"> > </button>
+            </div>
+        </div>
+    </div>
+    <!--首页大图结束-->
+    <!--搜索框-->
+    <div id="tables1">
+    {% include  './home/search_box.html' %}
+    </div>
+    <!--搜索框结束-->
+    <!--热门景区-->
+    <div id="popular_cruises1">
+            <div class="container">
+                <div class="popular_top">
+                <h2 class="animated">热门景区</h2>
+                </div>
+                <!--循环展示景区-->
+                <div id="popular_carousel_box">
+                    <!--内容-->
+                    <ul id="popular_list">
+                            {% for v in scenic %}
+                                <li >
+                                <div class="popular_block">
+                                    <figure>
+                                        <img src="{{ url_for('static', filename='uploads/'+v.logo) }}" alt="">
+                                        <div class="over" >
+                                            <div class="v1">{{ v.title }}<span>{{ v.area.name }}</span></div>
+                                            <div class="v2">{{ v.introduction.replace(v.introduction[80:],"...") }}</div>
+                                        </div>
+                                    </figure>
+                                    <div class="caption">
+                                        <div class="txt1"><span>{{ v.title }}</span>{{ v.area.name }}</div>
+                                        <div class="txt2">{{ v.address }}</div>
+                                        <div class="txt3">
+                                            <div class="stars">
+                                                {% for i in range(5) %}
+                                                    {% if i<v.star %}
+                                                        <img src="{{ url_for('static',filename='base/img/star1.png') }}" alt="">
+                                                    {% else %}
+                                                        <img src="{{ url_for('static', filename='base/img/star2.png') }}" alt="">
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                            <div class="right_side">
+                                                <a href="{{url_for('home.info',id=v.id)}}" class="btn_search">查看</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </li>
+                            {% endfor %}
+                    </ul>
+                    <div class="popular_pagination"><ul> </ul></div>
+                </div>
+
+            </div>
+    </div>
+     <!--热门景区结束-->
+    <!--推荐地区-->
+    <div id="recommended_area">
+        {% for v in hot_area %}
+        <div class="area_block">
+            <div class="container">
+                <h2>{{ v.name }}</h2>
+                <div class="introduction">&nbsp;&nbsp;&nbsp;{{ v.introduction }}</div>
+                <br>
+                <div class="area">
+                    {%  for vv in v.scenic %}
+                    <div class="area_one_scenic">
+                        <figure>
+                            <a href="{{ url_for('home.info',id=vv.id) }}">
+                            <img src="{{ url_for('static',filename='uploads/'+ vv.logo) }}">
+                            <div>{{ vv.title }}</div>
+                            </a>
+                        </figure>
+                        <div>
+                            <div>{{ vv.title }}</div>
+                            <div>{{ vv.address }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+     <!--推荐地区结束-->
+
+{% endblock %}
+
+{% block js %}
+<script src="{{url_for('static',filename='base/js/displayPicture.js')}}"></script>
+<script src="{{url_for('static',filename='base/js/popularArea.js')}}"></script>
+{% endblock %}

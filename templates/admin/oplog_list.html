@@ -1,0 +1,66 @@
+{% extends  "admin/admin.html" %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>一起旅行管理系统</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ url_for("admin.index") }}">首页</a></li>
+              <li class="breadcrumb-item">日志管理</li>
+              <li class="breadcrumb-item active"><a href="{{ url_for("admin.oplog_list") }}">操作日志列表</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">操作日志列表</h3>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects" style="font-size:14px;text-align: center;">
+              <thead>
+                  <tr>
+                      <th>编号</th>
+                      <th>管理员</th>
+                      <th>操作时间</th>
+                      <th>操作原因</th>
+                      <th>操作ip</th>
+                  </tr>
+              </thead>
+              <tbody>
+              {% if oplog_data %}
+                  {% for oplog in oplog_data %}
+                      <tr>
+                          <td>{{ oplog.id }}</td>
+                          {% if oplog.admin %}
+                          <td>{{ oplog.admin.name }}</td>
+                          {% else %}
+                          <td> 无管理员 </td>
+                          {% endif %}
+                          <td>{{ oplog.addtime }}</td>
+                          <td>{{ oplog.reason }}</td>
+                          <td>{{ oplog.ip }}</td>
+                      </tr>
+                  {% endfor %}
+              {% endif %}
+              </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+{% endblock %}

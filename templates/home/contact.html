@@ -1,0 +1,74 @@
+{% extends "home/home.html" %}
+{% block css %}
+    <link href="{{url_for('static', filename='base/css/contact.css')}}"  rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="contact">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6">
+            <h2>CONTACT INFO</h2>
+            <h4>公司地址</h4>
+            <p>
+              0000000000000000000<br>
+              电子邮件：<a href="#">0000000000000</a>
+            </p>
+
+            <br>
+            <h4>企业在线培训服务</h4>
+            <p>
+              联系电话：0000-0000000<br>
+              电子邮件：<a href="#">000000000000000000000</a>
+            </p>
+            <br>
+            <h4>客户服务</h4>
+            <p>
+              联系电话：0000-00000000<br>
+              电子邮件：<a href="#">0000000000000000000</a>
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <h2>意见建议</h2>
+            <div id="note"></div>
+            <div id="fields">
+            {% for msg in get_flashed_messages(category_filter=["ok"]) %}
+                <div class="alert ">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+              <form id="ajax-contact-form" class="form-horizontal" action="" method="post" novalidate>
+                <div class="form-group">
+                    <label>{{ form.name.label}}</label>
+                    {{ form.name }}
+                    {% for err in form.name.errors %}
+                        <div class="notification_error">{{ err }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label >{{ form.email.label }}</label>
+                    {{ form.email }}
+                    {% for err in form.email.errors %}
+                        <div class="notification_error">{{ err }}</div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                        <label >{{ form.content.label }}</label>
+                        {{ form.content }}
+                        {% for err in form.content.errors %}
+                        <div class="notification_error">{{ err }}</div>
+                    {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                    {{ form.csrf_token }}
+                    {{ form.submit }}
+              </form>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

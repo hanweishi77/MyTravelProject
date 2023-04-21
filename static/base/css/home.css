@@ -1,0 +1,329 @@
+
+body{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: red;
+}
+ul{
+    list-style: none;
+}
+
+/*=================导航条=============================*/
+.nav{
+    overflow: hidden;
+    width: 1200px;
+    border-bottom:1px solid #e4e4e4;
+    margin: 0 auto;
+	box-shadow:0 1px 5px rgba(0,0,0,.1)
+}
+.nav .nav_logo{
+    overflow: hidden;
+    float:left;
+    margin-left: 80px;
+}
+
+.nav .nav_option{
+    overflow: hidden;
+    width:900px;
+    float: right;
+}
+
+.nav_logo h1{
+    font-size: 18px;
+    float:right;
+    color:#4fc08d;
+    margin-top: 30px;
+}
+ .nav_logo img{
+    float: left;
+    width: 85px;height: 70px;
+}
+
+ .nav_option ul{
+     width:690px;
+     height:50px;
+     margin-left: 80px;padding: 0;
+ }
+.nav_option li{
+    float: left;
+    margin-left: 30px;
+    margin-top: 20px;
+    padding: 10px;
+}
+/*=====================首页大图=========================*/
+#banner{
+    width:1200px;
+    height:450px;
+    margin:0 auto; padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+#banner .slider-wrapper img{
+    width:1200px;
+    height:450px;
+}
+#banner .slider-footer{
+    position: absolute;
+    bottom:5px;
+    left:15px;
+}
+#banner .slider-footer p{
+    color:white;
+}
+#banner .slider-indicator{
+    display: flex;
+    padding: 0;
+
+}
+#banner  .slider-footer li{
+    width:10px;
+    height:10px;
+    margin:0 3px;
+    border-radius:50%;
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+#banner  .slider-footer li.active{
+    float:left;
+    width:12px;
+    height:12px;
+    margin:0 3px;
+    border-radius:50%;
+    background-color: grey;
+}
+#banner .toggle{
+    position: absolute;
+    width: 1200px;
+    bottom: 230px;
+}
+#banner .toggle  .left_side {
+    float: left;
+}
+#banner .toggle  .right_side {
+    float: right;
+    margin-right: 28px;
+}
+/* =============================搜索框==========================*/
+#tables1{
+    border-top: #00a99d 4px solid;
+    border-bottom:1px solid #e4e4e4;
+    box-shadow:0 1px 5px rgba(0,0,0,.1);
+    width:1200px;
+    height:100px;
+    margin: 0 auto;
+}
+#tables1 .form1{
+    padding: 10px  40px;
+}
+#tables1 .row{
+
+    width:45%;
+    height: 100px;
+   /* border: 1px solid red;*/
+}
+.col{float:left;margin-left: 5px;}
+.col-search{margin-top:20px;}
+.select{width:150px;height: 35px;border:#4fc08d 2px solid;}
+.btn-form1-submit{
+    width:120px;height: 35px;
+	background-color:#4fc08d;
+	color:#fff;
+	cursor:pointer;
+	border:#4fc08d;
+	border-radius:4px;
+    text-align: center;
+}
+
+/* ============================= 热门景区 ====================== */
+#popular_cruises1{
+    margin: 0 auto;
+    width: 1200px;
+    height:630px;
+}
+.popular_top{
+    height:100px;
+    margin:0 ;
+    padding: 0;
+    /*border: 2px solid yellow;*/
+}
+#popular_carousel_box{
+    height:500px;
+    width: 990px;
+    margin:0 auto ;padding: 0;
+    overflow: hidden;
+}
+h2.animated{
+    font-family: "楷体";
+    font-size: 35px;
+    height:50px;
+    text-align: center;
+    margin: 0;padding: 0;
+    /*border: 2px solid black;*/
+}
+#popular_list{
+    width: 2400px;
+    height:430px;
+    margin:0 ;padding: 0;
+
+}
+#popular_list>li{
+    float:left;
+    /*border: 4px  solid  green;*/
+    width:300px;
+    height:80%;
+    margin-right: 30px;
+    padding: 0;
+}
+.popular_block{margin:0;padding: 0;}
+figure{margin:0;padding: 0;position: relative;}
+#popular_list  figure>img{
+    width:300px;
+    height:300px;
+    margin:0;padding: 0;
+    position: relative;
+    /*border: 4px  solid  goldenrod;*/
+}
+
+figure>.over {
+    position: absolute;
+	margin-bottom: 0;
+	background: rgba(0, 0, 0, .5);
+	font-size: 12px;
+	color: #fff;
+     bottom:5px;
+    min-height: 80px;
+     width: 280px;
+    padding: 5px 10px;
+    display: none;
+}
+figure:hover>.over {display: block;}
+.over .v1{ font-weight: 700; font-size: 21px; font-family: "楷体";}
+.over .v1 span{color: #fef697; font-size: 12px; padding-left: 5px; font-style: italic; font-weight: 400;}
+.over .v2{}
+.caption{padding: 25px; border-bottom: 3px solid transparent; background: #fafafa;}
+.txt1{font-weight: 500; padding-bottom: 5px; font-size: 12px; color: #fb000d;}
+.txt1 span{ padding-right: 5px;font-size: 21px; color: #636363; }
+.txt2{color: #636363; padding-bottom: 20px;}
+.txt3{}
+.txt3 .stars{ float: left;}
+#popular_cruises1 .txt3 .right_side{
+    float: right;
+    font-size: 16px; background-color: gray;
+    padding: 2px 12px;
+    border-radius: 10%;
+}
+#popular_cruises1 .txt3 .right_side a{color: white;}
+#popular_cruises1 .txt3 .right_side:hover{background-color: green;}
+
+
+#popular_carousel_box .popular_pagination{
+    /*border: 2px solid red;*/
+    height:30px;width:600px;
+    margin:10px  auto;
+}
+#popular_carousel_box .popular_pagination ul {
+    overflow: hidden;
+}
+#popular_carousel_box .popular_pagination ul>li{
+    float:left;
+    width: 18px;height:18px;
+    border:2px solid grey;
+    margin-left: 6px;
+    padding: 0px;
+    text-align: center;
+    cursor:pointer;
+}
+.active{background-color: grey;}
+/*----------------------------热门地区--------------------------------*/
+#recommended_area{
+    overflow:hidden;
+    margin: 0 auto;
+    border-top: #00a99d 4px solid;
+
+    width:1200px;
+    position: relative;
+}
+#recommended_area>.area_block{
+    width:1200px;
+    height:600px;
+    /*border: 2px solid blue;*/
+}
+#recommended_area img{
+    width:300px;height:300px;
+}
+#recommended_area figure div{
+    color:white;
+}
+#recommended_area  .container{
+
+    /* border: 1px solid red;*/
+}
+#recommended_area  .area{
+
+ }
+
+#recommended_area .area_one_scenic{
+    float:left;
+    margin-left: 50px;
+}
+
+#recommended_area  h2 {
+
+    font-family: "楷体";
+    font-size: 35px;
+    height: 50px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    /*border: 2px solid black;}*/
+}
+.introduction{
+    margin: 20px;
+    padding-left: 40px;
+    padding-right: 100px;
+}
+.area_one_scenic figure{
+    position: relative;
+}
+.area_one_scenic figure div{
+    position: absolute;
+    bottom: 40px;
+}
+
+/*--------------------------底部---------------------------------*/
+.bot1_wrapper{
+    margin: 0 auto;
+    background: #252525;
+    border-top: 4px solid #1cbbb4;
+    color: #959595;
+    width: 1200px;
+    height:200px;
+    position: relative;
+}
+.col-sm-4{float:left;margin-left: 200px;text-align: center;}
+.bot1_wrapper .row{position: relative;margin-top: 50px;}
+#bot1_title{text-align: center;}
+.ul1 { padding: 0;}
+.ul1 a{ font-size: 10px;}
+.bot2_wrapper{
+    margin: 0 auto;
+    background: #00a99d;
+    padding-top: 29px;
+    padding-bottom: 29px;
+    color: #fff;
+    font-size: 13px;
+    width:1200px;
+}
+.bot2_wrapper a{color: #fff; text-decoration: none;}
+.bot2_wrapper a:hover{text-decoration: underline;}
+.bot2_wrapper span{padding: 0 5px;}
+
+.bot2_wrapper .left_side{float: left;}
+.bot2_wrapper .right_side{float: right;}
+.bot2_wrapper  .container{width:500px; margin: 0 auto;}

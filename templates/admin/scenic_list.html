@@ -1,0 +1,108 @@
+{% extends  "admin/admin.html" %}
+
+{% block content %}
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>一起旅行管理系统</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ url_for("admin.index") }}">首页</a></li>
+              <li class="breadcrumb-item">景区管理</li>
+              <li class="breadcrumb-item active"><a href="{{ url_for("admin.scenic_list") }}">景区列表</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">景区列表</h3>
+          <!-- search box -->
+          <div class=" card-tools">
+            <form action="" method="GET">
+              <div class="input-group input-group-sm">
+                 <input type="text" name="titleSearch" class="form-control "
+                   placeholder="请输入景区名称...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
+                    </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects" style="font-size:14px;text-align: center;">
+              <thead>
+                  <tr>
+                      <th style="width: 6%">编号</th>
+                      <th style="width: 15%">景区名称</th>
+                      <th style="width: 15%">封面图片</th>
+                      <th>所属地区</th>
+                      <th style="width: 10%" class="text-center">是否热门</th>
+                      <th style="width: 10%">是否推荐</th>
+                      <th style="width: 10%">星级</th>
+                      <th style="width: 20%">操作选项</th>
+                  </tr>
+              </thead>
+              <tbody>
+              {% if scenic_all %}
+                  {% for scenic in scenic_all %}
+                      <tr>
+                          <td style="width: 6%">{{ scenic.id }}</td>
+                          <td style="width: 15%">{{ scenic.title }}</td>
+                          <td style="width: 15%">
+                            <img style="width:80px;height:80px"
+                                 src="{{ url_for('static', filename='uploads/'+scenic.logo) }}"
+                                 class="img-responsive center-block" alt="">
+                          </td>
+                          {% if scenic.area == None %}
+                              <td>无所属地</td>
+                          {% else %}
+                              <td>{{ scenic.area.name }}</td>
+                          {% endif %}
+                          {% if  scenic.is_hot==1 %}
+                          <td style="width: 10%"> 是</td>
+                          {% else %}
+                          <td style="width: 10%"> 否</td>
+                          {% endif %}
+                          {% if  scenic.is_recommended==1 %}
+                          <td style="width: 10%"> 是</td>
+                          {% else %}
+                          <td style="width: 10%"> 否</td>
+                          {% endif %}
+                          <td style="width: 10%">{{ scenic.star}}星</td>
+                          <td class="project-actions text-right" style="width: 20%">
+                              <a class="btn btn-primary btn-sm" href="{{url_for('admin.scenic_edit',id=scenic.id)}}">
+                                  <i class="fas fa-folder">
+                                  </i>
+                                  编辑
+                              </a>
+                              <a class="btn btn-info btn-sm" href= "{{url_for('admin.scenic_del',scenic_id=scenic.id)}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  删除
+                              </a>
+                          </td>
+                      </tr>
+                  {% endfor %}
+              {% endif %}
+              </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+{% endblock %}

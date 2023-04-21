@@ -1,0 +1,27 @@
+#contact{
+    width: 1200px;
+    margin:0 auto;
+}
+.row{
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+#contact .col-sm-6{
+    float: left;
+    padding: 50px;
+}
+.notification_error{ color:#f00; padding-bottom:10px; }
+
+#ajax-contact-form .form-group{margin-left: 0; margin-right: 0;}
+#ajax-contact-form .form-group label{color: #141414; font-weight: 400; text-transform: uppercase; display: none;}
+#ajax-contact-form .form-control{height: 38px;width: 600px; padding: 8px 12px; font-size: 14px; line-height: 20px; color: #959595; background: #fff; ; border: 1px solid #e8e8e8;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px;}
+#ajax-contact-form .form-control:focus{border-color: #1cbbb4; color: #1cbbb4;   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(28, 187, 180, .3); box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(28, 187, 180, .3);}
+#ajax-contact-form textarea.form-control {height: 160px;}
+
+#fields .alert{
+    background-color: #636363;color: white;
+}
+.btn-submit{display: block; color: #fff;background: #1cbbb4;  font-family: 'Raleway'; font-size: 14px; line-height: 20px; font-weight: 800; padding: 10px 20px; text-decoration: none;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; border: none; text-transform: uppercase;box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; moz-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset; -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2) inset;
+}
+.btn-submit:hover{color: #fff; background: #fb000d;}
