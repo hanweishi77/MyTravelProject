@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, SelectField, \
     FileField, TextAreaField, RadioField
-from wtforms.validators import DataRequired, ValidationError, EqualTo
+from wtforms.validators import DataRequired, EqualTo
 from models import Admin
 from flask import session
 from flask_ckeditor.fields import CKEditorField
@@ -223,6 +223,12 @@ class ScenicForm(FlaskForm):
         }
     )
 
+    def validate(self, extra_validators=None):
+        initial_validation = super(ScenicForm, self).validate()
+        if not initial_validation:
+            return False
+        return True
+
 
 class AreaForm(FlaskForm):
     """
@@ -264,6 +270,12 @@ class AreaForm(FlaskForm):
             "class": "btn btn-primary",
         }
     )
+
+    def validate(self, extra_validators=None):
+        initial_validation = super(AreaForm, self).validate()
+        if not initial_validation:
+            return False
+        return True
 
 
 class TravelsForm(FlaskForm):
@@ -319,3 +331,9 @@ class TravelsForm(FlaskForm):
             "class": "btn btn-primary",
         }
     )
+
+    def validate(self, extra_validators=None):
+        initial_validation = super(TravelsForm, self).validate()
+        if not initial_validation:
+            return False
+        return True
