@@ -30,6 +30,6 @@ MAIL_SERVER = "smtp.qq.com"                               # 邮箱服务器，�
 MAIL_USE_SSL = True                                       # 是否加密通讯
 MAIL_PORT = 465                                           # 邮箱端口号
 MAIL_USERNAME = "2276234553@qq.com"                       # 发送邮件所用的用户名，一般设置成邮箱账号就好
-MAIL_PASSWORD = "lblvkqbhhlcqdjaf"                        # SMTP服务的授权码
+MAIL_PASSWORD = "你自己的邮箱授权码"                            # SMTP服务的授权码
 MAIL_DEFAULT_SENDER = "2276234553@qq.com"                 # 默认发送者，邮箱账号即可
 
